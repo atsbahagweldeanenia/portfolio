@@ -1,0 +1,6 @@
+{
+  "name": "ScholarFolio - Academic & Education Portfolio",
+  "description": "A comprehensive, scholarly academic and education portfolio showcasing teaching philosophy, interactive course syllabi, research publications, student mentorship, and curriculum leadership.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atsbaha G. Weldeanenia - Academic & Engineering Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary: #38bdf8;
+            --accent: #818cf8;
+            --border: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+        }
+
+        .hero-text h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-text h2 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Section Layout */
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .card .subtitle {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .card p, .card ul {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .card ul {
+            padding-left: 1.2rem;
+        }
+
+        /* Interactive Skills Filter */
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text-color);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary);
+            color: var(--bg-color);
+            border-color: var(--primary);
+        }
+
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .badge {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--primary);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        /* Tabbed Component */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Media Queries */
+        @media (max-width: 600px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .contact-info {
+                justify-content: center;
+            }
+            nav {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.8rem 1rem;
+            }
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">A. G. Weldeanenia</div>
+        <ul class="nav-links">
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <img src="data:image/jpeg;base64,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" alt="Atsbaha Gebreslassie Weldeanenia" class="hero-img">
+            <div class="hero-text">
+                <h1>Atsbaha Gebreslassie Weldeanenia</h1>
+                <h2>Department Head & Engineering Lecturer</h2>
+                <div class="contact-info">
+                    <span>📍 Mekelle, Ethiopia</span>
+                    <span>✉️ <a href="mailto:atsbaha.gebreslassie@mu.edu.et">atsbaha.gebreslassie@mu.edu.et</a></span>
+                    <span>📞 <a href="tel:+251914436804">(+251) 914436804</a></span>
+                    <span>🔗 <a href="https://www.linkedin.com/in/atsbaha-gebreslassie-4176a288/" target="_blank">LinkedIn Profile</a></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Department Head</h3>
+                    <div class="subtitle">Mekelle University | Apr 2023 – Present</div>
+                    <p>Overseeing overall functioning of the Dept. of Electronics & Communication Engineering. Providing strategic leadership and promoting an innovative academic environment.</p>
+                </div>
+                <div class="card">
+                    <h3>Engineering Lecturer</h3>
+                    <div class="subtitle">Mekelle University | Oct 2020 – Present</div>
+                    <p>Undertaking advanced course instruction, leading research initiatives, and mentoring students for academic and professional growth.</p>
+                </div>
+                <div class="card">
+                    <h3>Assistant Lecturer</h3>
+                    <div class="subtitle">Mekelle University | Jul 2015 – Oct 2020</div>
+                    <p>Contributed to course instruction, supported department research projects, and collaborated with faculty members to enhance student learning.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Certifications Tabs -->
+        <section id="education">
+            <h2 class="section-title">Education & Credentials</h2>
+            <div class="tabs">
+                <button class="tab-btn active" onclick="openTab(event, 'degrees')">Degrees</button>
+                <button class="tab-btn" onclick="openTab(event, 'certs')">Certifications</button>
+            </div>
+
+            <div id="degrees" class="tab-content active">
+                <div class="grid">
+                    <div class="card">
+                        <h3>M.Sc. in Communication Engineering</h3>
+                        <div class="subtitle">Mekelle University | 2016 – 2019</div>
+                        <p>Advanced focus on wireless communications, network protocols, and system designs.</p>
+                    </div>
+                    <div class="card">
+                        <h3>B.Sc. in Electronics & Communication Eng.</h3>
+                        <div class="subtitle">Mekelle University (MIT) | 2010 – 2015</div>
+                        <p><strong>GPA:</strong> 3.65/4.0</p>
+                        <p>Focus on Analog/Digital Electronics, Embedded Systems, Signal Processing, and Telecommunication Networks.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="certs" class="tab-content">
+                <div class="grid">
+                    <div class="card">
+                        <h3>Endpoint Security</h3>
+                        <div class="subtitle">Cisco Networking Academy | Dec 2023</div>
+                        <p>Threat mitigation, malware analysis from packet captures, and network security configuration.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Network Addressing & Troubleshooting</h3>
+                        <div class="subtitle">Cisco Networking Academy | Dec 2023</div>
+                        <p>IPv6 addressing schemes, router/switch configuration, and physical/data link layer operations.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Strategies for Successful Online Learning</h3>
+                        <div class="subtitle">ASU / Mastercard Foundation | Oct 2023</div>
+                        <p>Advanced methodologies for online course delivery and digital instructional design.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research & Projects Section -->
+        <section id="projects">
+            <h2 class="section-title">Key Projects & Research</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Frequency Reconfigurable Antenna Array</h3>
+                    <div class="subtitle">Research Project | 2018 – 2019</div>
+                    <p>Heterogeneous array of Minkowski Fractal and Hexagonal Patch Antennas for adaptable WLAN and WPAN applications.</p>
+                </div>
+                <div class="card">
+                    <h3>Patch Antenna for Telemetry Downlink</h3>
+                    <div class="subtitle">B.Sc. Thesis Project | 2015</div>
+                    <p>Designed a patch antenna focusing on frequency optimization, gain, and radiation patterns for efficient signal transmission.</p>
+                </div>
+                <div class="card">
+                    <h3>Digital Modulation Synchronization</h3>
+                    <div class="subtitle">Research Project | 2014</div>
+                    <p>Analyzed and developed synchronization techniques to enhance accuracy across diverse digital modulation schemes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick=\"filterSkills('all', this)\">All</button>
+                <button class="filter-btn" onclick=\"filterSkills('hardware', this)\">Hardware & Design</button>
+                <button class="filter-btn" onclick=\"filterSkills('software', this)\">Software & Tools</button>
+                <button class="filter-btn" onclick=\"filterSkills('networking', this)\">Networking & Security</button>
+            </div>
+            
+            <div class="card">
+                <div class="badge-container" id="skills-list">
+                    <!-- Populated via JavaScript -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Interactive Skills Data
+        const skillsData = [
+            { name: "HFSS (Antenna Design)", category: "hardware" },
+            { name: "C / C++", category: "software" },
+            { name: "MATLAB", category: "software" },
+            { name: "Assembly (8085, 8086, 8051)", category: "hardware" },
+            { name: "VHDL", category: "hardware" },
+            { name: "CAD", category: "hardware" },
+            { name: "Cisco Packet Tracer", category: "networking" },
+            { name: "IPv6 & Routing", category: "networking" },
+            { name: "Endpoint Security", category: "networking" },
+            { name: "TensorFlow / PyTorch", category: "software" },
+            { name: "Graphic Design", category: "software" },
+            { name: "Hardware Troubleshooting", category: "hardware" }
+        ];
+
+        function displaySkills(filter = 'all') {
+            const container = document.getElementById('skills-list');
+            container.innerHTML = '';
+            
+            const filtered = filter === 'all' 
+                ? skillsData 
+                : skillsData.filter(s => s.category === filter);
+
+            filtered.forEach(skill => {
+                const badge = document.createElement('span');
+                badge.className = 'badge';
+                badge.textContent = skill.name;
+                container.appendChild(badge);
+            });
+        }
+
+        function filterSkills(category, btn) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            btn.classList.add('active');
+            displaySkills(category);
+        }
+
+        // Tab Switching Functionality
+        function openTab(evt, tabName) {
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            const tabBtns = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < tabBtns.length; i++) {
+                tabBtns[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Initial Load
+        displaySkills();
+    </script>
+</body>
+</html>
