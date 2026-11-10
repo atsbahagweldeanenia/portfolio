@@ -65,6 +65,12 @@ export const PrintableCVModal: React.FC<PrintableCVModalProps> = ({ isOpen, onCl
             <img
               src={profile.avatarUrl}
               alt={profile.name}
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (!target.src.includes('photo_2026-11-10')) {
+                  target.src = './assets/aistudio/photo_2026-11-10_15-05-23_c84d4bbf.jpg';
+                }
+              }}
               className="w-24 h-28 object-cover object-[center_12%] rounded-lg border border-slate-300 shadow-sm shrink-0"
             />
           </div>

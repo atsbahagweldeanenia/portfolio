@@ -39,6 +39,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 src={profile.avatarUrl}
                 alt={profile.name}
                 referrerPolicy="no-referrer"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.src.includes('photo_2026-11-10')) {
+                    target.src = './assets/aistudio/photo_2026-11-10_15-05-23_c84d4bbf.jpg';
+                  }
+                }}
                 className="w-full h-full object-cover object-[center_12%] hover:scale-105 transition-transform duration-300"
               />
             </div>

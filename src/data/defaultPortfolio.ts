@@ -1,4 +1,5 @@
 import { PortfolioData } from '../types/portfolio';
+import profilePhoto from '../assets/images/profile.jpg';
 
 export const FACTUAL_PORTFOLIO_DATA: PortfolioData = {
   profile: {
@@ -14,7 +15,7 @@ export const FACTUAL_PORTFOLIO_DATA: PortfolioData = {
     officeLocation: 'Mekelle Institute of Technology (MIT Campus), Block B',
     officeHours: 'Monday – Thursday: 10:00 AM – 12:30 PM (or by appointment)',
     bio: 'Department Head and Engineering Lecturer at Mekelle University with over 9 years of academic leadership, higher education instruction, and research in communication systems. Experienced in department management, wireless communication protocols, antenna design, embedded microcontrollers, and modern academic program development.',
-    avatarUrl: '/assets/aistudio/photo_2026-11-10_15-05-23_c84d4bbf.jpg',
+    avatarUrl: profilePhoto,
   },
 
   experience: [
